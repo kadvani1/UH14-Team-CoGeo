@@ -36,10 +36,11 @@ $params = array(
     "ScanFilter" => array(
         "Chatty" => array(
             "AttributeValueList" => array(
-                array(TYPE::STRING => $feeling1)
+                array(TYPE::STRING => $feeling1 - 2)
             ),
-            "ComparisonOperator" => "EQ"
+            "ComparisonOperator" => "LT"
         ),
+        
         "Buzz" => array(
             "AttributeValueList" => array(
                 array(TYPE::STRING => $feeling2)
