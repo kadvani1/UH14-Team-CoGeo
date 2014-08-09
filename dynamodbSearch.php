@@ -30,63 +30,77 @@ $feeling7 = $_POST["feeling7"]; //Trackies
 
 $tableName = "CoGeo_Place_Database";
 
-$params = array(
-    "TableName" => $tableName,
-    "AttributesToGet" => array("PlaceReference"),
-    "ScanFilter" => array(
-        "Chatty" => array(
-            "AttributeValueList" => array(
-                array(TYPE::STRING => $feeling1 - 2)
-            ),
-            "ComparisonOperator" => "LT"
-        ),
-        
-        "Buzz" => array(
-            "AttributeValueList" => array(
-                array(TYPE::STRING => $feeling2)
-            ),
-            "ComparisonOperator" => "EQ"
-        ),
-        "Pump" => array(
-            "AttributeValueList" => array(
-                array(TYPE::STRING => $feeling3)
-            ),
-            "ComparisonOperator" => "EQ"
-        ),
-        "Adventure" => array(
-            "AttributeValueList" => array(
-                array(TYPE::STRING => $feeling4)
-            ),
-            "ComparisonOperator" => "EQ"
-        ),
-        "Bustle" => array(
-            "AttributeValueList" => array(
-                array(TYPE::STRING => $feeling5)
-            ),
-            "ComparisonOperator" => "EQ"
-        ),
-        "LoveyDovey" => array(
-            "AttributeValueList" => array(
-                array(TYPE::STRING => $feeling6)
-            ),
-            "ComparisonOperator" => "EQ"
-        ),
-        "Trackies" => array(
-            "AttributeValueList" => array(
-                array(TYPE::STRING => $feeling7)
-            ),
-            "ComparisonOperator" => "EQ"
-        ),
-    )
-);
+$itemToBeRetrieved = array();
 
-$response = $client->scan($params);
-$items = $response->get("Items");
+$i = 0;
 
-echo $feeling1 . $feeling2 . $feeling3 . $feeling4 . $feeling5 . $feeling6 . $feeling7;
+while (count($itemToBeRetrieved) <= 9) {
+    $params = array(
+        "TableName" => $tableName,
+        "AttributesToGet" => array("PlaceReference"),
+        "ScanFilter" => array(
+            "Chatty" => array(
+                "AttributeValueList" => array(
+                    array(TYPE::STRING => (string)(($feeling1 - $i >= 1) ? ($feeling1 - $i) : 0)),
+                    array(TYPE::STRING => (string)(($feeling1 + $i <= 8) ? ($feeling1 + $i) : 9))
+                ),
+                "ComparisonOperator" => "BETWEEN"
+            ),
 
-foreach ($items as $item) {
-    echo "Item scanned is \"{$item['PlaceReference']['S']}\".\n";
+            "Buzz" => array(
+                "AttributeValueList" => array(
+                    array(TYPE::STRING => (string)(($feeling2 - $i >= 1) ? ($feeling2 - $i) : 0)),
+                    array(TYPE::STRING => (string)(($feeling2 + $i <= 8) ? ($feeling2 + $i) : 9))
+                ),
+                "ComparisonOperator" => "BETWEEN"
+            ),
+            "Pump" => array(
+                "AttributeValueList" => array(
+                    array(TYPE::STRING => (string)(($feeling3 - $i >= 1) ? ($feeling3 - $i) : 0)),
+                    array(TYPE::STRING => (string)(($feeling3 + $i <= 8) ? ($feeling3 + $i) : 9))
+                ),
+                "ComparisonOperator" => "BETWEEN"
+            ),
+            "Adventure" => array(
+                "AttributeValueList" => array(
+                    array(TYPE::STRING => (string)(($feeling4 - $i >= 1) ? ($feeling4 - $i) : 0)),
+                    array(TYPE::STRING => (string)(($feeling4 + $i <= 8) ? ($feeling4 + $i) : 9))
+                ),
+                "ComparisonOperator" => "BETWEEN"
+            ),
+            "Bustle" => array(
+                "AttributeValueList" => array(
+                    array(TYPE::STRING => (string)(($feeling5 - $i >= 1) ? ($feeling5 - $i) : 0)),
+                    array(TYPE::STRING => (string)(($feeling5 + $i <= 8) ? ($feeling5 + $i) : 9))
+                ),
+                "ComparisonOperator" => "BETWEEN"
+            ),
+            "LoveyDovey" => array(
+                "AttributeValueList" => array(
+                    array(TYPE::STRING => (string)(($feeling6 - $i >= 1) ? ($feeling6 - $i) : 0)),
+                    array(TYPE::STRING => (string)(($feeling6 + $i <= 8) ? ($feeling6 + $i) : 9))
+                ),
+                "ComparisonOperator" => "BETWEEN"
+            ),
+            "Trackies" => array(
+                "AttributeValueList" => array(
+                    array(TYPE::STRING => (string)(($feeling7 - $i >= 1) ? ($feeling7 - $i) : 0)),
+                    array(TYPE::STRING => (string)(($feeling7 + $i <= 8) ? ($feeling7 + $i) : 9))
+                ),
+                "ComparisonOperator" => "BETWEEN"
+            ),
+        )
+    );
+
+    $response = $client->scan($params);
+    $items = $response->get("Items");
+    if ($items[$i]["PlaceReference"]["S"] != NULL) {
+        array_push($itemToBeRetrieved, $items[$i]["PlaceReference"]["S"]);
+    }
+    $itemToBeRetrieved = array_unique($itemToBeRetrieved);
+    $itemToBeRetrieved = array_filter($itemToBeRetrieved);
+    $i = $i + 1;
 }
 
+print_r($itemToBeRetrieved);
 echo "Successfully scanned!";

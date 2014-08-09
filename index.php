@@ -20,9 +20,9 @@
     <style>
 
 
-        body{
+        body {
             text-align: center;
-            background: url("http://wallpaperscraft.com/image/mountain_peak_stars_sky_night_light_snow_46057_1920x1200.jpg?orig=1");
+            background-image: url("galaxy.jpg");
             background-size: cover;
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -32,79 +32,123 @@
 
         }
 
-        h1{
+        h1 {
             text-align: center;
             color: white;
         }
 
-        p{
+        p {
             text-align: center;
             color: white;
         }
 
-        h3{
+        h3 {
             text-align: center;
             color: white;
         }
+
+        @media (max-width: 1000px) {
+
+            .sliders {
+
+                width: auto;
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+
+            p {
+                text-align: center;
+                color: white;
+            <!-- font-size : 8 px;
+            -->
+            }
+
+            h3 {
+                text-align: center;
+                color: white;
+            <!-- font-size : 16 px;
+            -->
+            }
+
+            body {
+                text-align: center;
+                background-image: url("mobile.jpg");
+                background-size: cover;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center fixed;
+
+            }
+
+        }
+
 
     </style>
-
-
-
 
 
 </head>
 
 <body>
-<header class = "navbar">
-    <div class = "container">
+<header class="navbar">
+    <div class="container">
 
 
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">CoGeo</a>
+                    <a class="navbar-brand" href="index.php">CoGeo</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="places.php">Search</a></li>
                         <li><a href="submit.php">Add Spot</a></li>
-                        <li><a href="places.php">See All</a></li>
+
 
                     </ul>
 
 
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
         </nav>
     </div>
 </header>
 <div class="container">
     <h1> Welcome to CoGeo</h1>
+
     <p>
-        CoGeo is your one shop stop for everything adventurous,
+        CoGeo is your one stop shop for everything adventurous,
         exciting and romantic when in Melbourne! Use our add location
         link below to share one of your favourite hidden gems.
-        or click the see all to see what other people have shared.
+        or click the search to see what other people have shared.
     </p>
+
     <h3> Get CoGeo-ing!!!</h3>
     </br>
     </br>
     <!-- Indicates a successful or positive action -->
-    <a href="submit.php"><button type="button" class="btn btn-success btn-lg">Add Location</button></a>
+    <a href="submit.php">
+        <button type="button" class="btn btn-success btn-lg">Add Location</button>
+    </a>
     </br>
     </br>
     <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-    <a href="places.php"><button type="button" class="btn btn-primary btn-lg">See All Spots</button></a>
+    <a href="places.php">
+        <button type="button" class="btn btn-primary btn-lg">Search Spots</button>
+    </a>
 
 </div>
 
@@ -113,7 +157,10 @@
 </br>
 </br>
 
+<script>
 
+
+</script>
 
 </body>
 
