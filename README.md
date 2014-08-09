@@ -3,36 +3,30 @@ Team-CoGeo
 
 Name of Application: CoGeo
 Team name: CoGeo
-Members of team: Liam Shaw, Chris Wright, Chuning Song, Kingsley Advanti
+Members of team: Liam Shaw, Chris Wright, Chuning Song, Kingsley Advani
 Third Party API's/Code: Bootstrap, Google Places, Google Maps, AWS
 Access to CoGeo: 54.79.6.99
 
 
 Description:
 
-CoGeo is a completely novel way for finding the best things for you to do. It's novel because it
-matches places with feelings and then lets you search for places based on how you're feeling!
+Unfortunately more often than not life feels like it's being coded only in HTML. It's black and white. There is little variation and
+we find that our life is static. Where is the CSS? Where can we find the colour, quirks, inspirations, beauty, and dance?! It's found 
+in human emotion. Feelings are our CSS. And, it is through new experiences and rich human interaction where these feelings are felt.  
 
-The feeling tags are crowd sourced and matched to places by using the upload functionality 
-(see 'uploaded spots' on the website).
+So wouldn't it be great to always have a tool on you for you to find your CSS? Wouldn't it be great if you could find those feelings?
 
-Places are processed and stored using AWS. We use dynamodb to store place information and
-feeling tags, and ec2 for processing.
+Drumroll... CoGeo.
 
-Users are able to search for places by using the search functionality on the website. 
+CoGeo is an app that recommends places for you to go based on how you are feeling.
 
-Users simply drag the sliders to indicate how they are feeling, or would like to feel. Each 
-slider represents a spectrum, for example the 'Chatty' slider displays the level of how 'chatty' you
-feel can range from 'quiet time' to 'outgoing'.
+If you're feeling outgoing, CoGeo knows where you should go.
 
-Users then hit 'search' and 9 search results will be returned, in order of greatest relevance
-to least relevance.
+If you're feeling relaxed, CoGeo knows where you should go.
 
-Relevancy is based on how well feeling search criteria matches feeling tags on each place. In 
-the future we are looking to integrate distance, price, time of day, weather, demographics, and 
-past user activity to make the search results more relevant.
+If you're feeling Explorative, CoGeo knows where you should go.
 
-
+It's a very smart app.
 
 ****Note: The search functionality and search results funtionality for CoGeo was developed at unihack, 
 however the upload functionality was not. 
